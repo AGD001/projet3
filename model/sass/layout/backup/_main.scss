@@ -1,0 +1,132 @@
+/* Début Main */
+main {
+    font-family: 'Roboto', sans-serif;
+
+    & .localisation {
+        @extend %grid-center;
+        @include grid-template-set($localisation);
+
+        padding: 1em;
+        background: #eaeaea;
+        background: linear-gradient(180deg,
+                rgba(173, 173, 173, .35) 0%,
+                rgba(234, 234, 234, .75) 15%,
+                rgba(234, 234, 234, 1) 100%);
+
+        & h2 {
+            & i {
+                padding: 0 0.5em 0 0;
+            }
+        }
+    }
+
+    /* Debut section presentation */
+    & .presentation {
+        @extend %grid-center;
+        @include grid-template-set($presentation);
+        padding: 2em 0 3em;
+        background: #f6f6f6;
+        text-align: center;
+
+        & h2 {
+            padding: 0 5em;
+        }
+
+        & p {
+            padding: 1em 5em 2em;
+        }
+    }
+
+
+    /* Fin section presentation */
+
+    /* Debut section commentCaMarche */
+    & .commentCaMarche {
+        @extend %grid-center;
+        @include grid-template-set (1);
+        padding: 3em 1em;
+
+        & h2 {
+            @include grid-pos-set (1, auto, 1, 2);
+            justify-self: start;
+            justify-content: center;
+        }
+
+        & ol {
+            @include grid-pos-set (2, auto, 1, 4);
+            display: grid;
+            @include grid-template-set ($commentCaMarche);
+            grid-gap: 2em;
+            grid-row: auto;
+            margin: 1em 1em 0;
+            justify-self: normal;
+            counter-reset: section;
+            padding: 1.5rem;
+            display: flex;
+            border-width: 1em;
+
+            & li {
+                & p {
+                    display: relative;
+                    left: 0.7em;
+                    align-content: center;
+                    justify-content: center;
+                    top: 1em;
+                    bottom: 1em;
+                    position: relative;
+
+
+                    & i {
+                        padding: 2.5rem;
+                        width: 10rem;
+                        background-color: #f6f6f6;
+                        border-radius: 1.25rem;
+                        justify-content: center;
+                        position: relative;
+                        text-align: center;
+                        right: 2em;
+                        top: 2em;
+                        z-index: 2;
+
+                    }
+                }
+            }
+
+            & li::before {
+                position: relative;
+                text-align: center;
+                counter-increment: section;
+                content: counter(section);
+                position: -webkit-sticky;
+                left: 0.5em;
+                padding: 0.3em 0.6em;
+                border-radius: 70%;
+                background-color: $violet-primaire;
+                color: $txt-fond-sombre;
+                align-items: center;
+                justify-content: baseline;
+                bottom: -3.48em;
+                right: 1em;
+                z-index: 1;
+
+            }
+
+            & li:hover {
+                background-color: lighten($violet-primaire, 30%);
+                border-radius: 1.25rem;
+
+
+
+                & i {
+                    color: $violet-primaire;
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+}
